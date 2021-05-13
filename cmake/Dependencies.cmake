@@ -16,9 +16,10 @@ include_directories(SYSTEM ${GLOG_INCLUDE_DIRS})
 list(APPEND Caffe_LINKER_LIBS ${GLOG_LIBRARIES})
 
 # ---[ Google-gflags
-include("cmake/External/gflags.cmake")
-include_directories(SYSTEM ${GFLAGS_INCLUDE_DIRS})
-list(APPEND Caffe_LINKER_LIBS ${GFLAGS_LIBRARIES})
+#include("cmake/External/gflags.cmake")
+find_package(GFlags CONFIG REQUIRED)
+#include_directories(SYSTEM ${GFLAGS_INCLUDE_DIRS})
+#list(APPEND Caffe_LINKER_LIBS ${GFLAGS_LIBRARIES})
 
 # ---[ Google-protobuf
 include(cmake/ProtoBuf.cmake)
@@ -78,8 +79,8 @@ endif()
 
 # ---[ BLAS
 if(NOT APPLE)
-  set(BLAS "Atlas" CACHE STRING "Selected BLAS library")
-  set_property(CACHE BLAS PROPERTY STRINGS "Atlas;Open;MKL")
+  # set(BLAS "Open" CACHE STRING "Selected BLAS library")
+  # set_property(CACHE BLAS PROPERTY STRINGS "Atlas;Open;MKL")
 
   if(BLAS STREQUAL "Atlas" OR BLAS STREQUAL "atlas")
     find_package(Atlas REQUIRED)

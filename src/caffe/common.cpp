@@ -1,5 +1,6 @@
 #include <boost/thread.hpp>
 #include <glog/logging.h>
+#include <unistd.h>
 #include <cmath>
 #include <cstdio>
 #include <ctime>

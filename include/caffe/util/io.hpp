@@ -33,7 +33,7 @@ inline void MakeTempDir(string* temp_dirname) {
   char* temp_dirname_cstr = new char[temp_dirname->size() + 1];
   // NOLINT_NEXT_LINE(runtime/printf)
   strcpy(temp_dirname_cstr, temp_dirname->c_str());
-  char* mkdtemp_result = mkdtemp(temp_dirname_cstr);
+  char* mkdtemp_result = mktemp(temp_dirname_cstr);
   CHECK(mkdtemp_result != NULL)
       << "Failed to create a temporary directory at: " << *temp_dirname;
   *temp_dirname = temp_dirname_cstr;
